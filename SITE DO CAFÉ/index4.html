@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Brasil Café - Cadastro</title>
+    <meta name="author" content="Pedro Jesus, Samer Araújo & Allana Cruz">
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="css/bootstrap.css" rel="sheetstyle"/>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/bootstrap.css" />
+    <script src="main.js"></script>
+    <script src="js/jquerry-3.2.1.js"></script>
+    <script src="js/bootstrap.js"></script>
+
+    <STYLE type="text/css"> 
+        A:link {text-decoration:none;color:white;} 
+        A:visited {text-decoration:none;color:white;} 
+        A:active {text-decoration:none;color:white;} 
+        A:hover {text-decoration:underline;color:white;} 
+    </STYLE> 
+<script type="text/javascript">
+    function somarValores(){
+        var s1 = document.getElementById("txt1").value;
+        var s2 = document.getElementById("txt2").value;
+        var s3 = parseInt(s1) + parseInt(s2);
+        alert(s3);
+    }
+</script>
+<body>
+  
+    <nav class="navbar navbar-inverse" style="border-color:black">
+    <div class="container-fluid">
+        <button type="button" data target="#meuMenu" data-toggle="collapse" class="navbar-toggle">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+    
+    </div>
+
+    <div id="MeuMenu" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+            <li><a href="file:///E:/ETEC/DD1%20Design%20Digital%20-%201DS2/Identidade%20Visual/SITE%20DO%20CAFÉ/index.html  ">Página Inicial</a></li>
+            <li><a href="file:///E:/ETEC/DD1%20Design%20Digital%20-%201DS2/Identidade%20Visual/SITE%20DO%20CAFÉ/index2.html">Cardápio</a></li>
+            <li><a href="file:///E:/ETEC/DD1%20Design%20Digital%20-%201DS2/Identidade%20Visual/SITE%20DO%20CAFÉ/index3.html">Sobre</a></li>
+            <li><a href="file:///E:/ETEC/DD1%20Design%20Digital%20-%201DS2/Identidade%20Visual/SITE%20DO%20CAFÉ/index4.html ">Cadastro</a></li>
+            <li><a href="file:///E:/ETEC/DD1%20Design%20Digital%20-%201DS2/Identidade%20Visual/SITE%20DO%20CAFÉ/index6.html">Pedidos</a></li>
+            <li><a href="file:///E:/ETEC/DD1%20Design%20Digital%20-%201DS2/Identidade%20Visual/SITE%20DO%20CAF%C3%89/index8.html">Identidade Visual</a></li>
+    </ul>
+    </div>
+  </div>
+</nav>
+<font color="white">
+    <center> <font face="Perpetua Titling MT"> <h1> Brasil Café </h1> </font>
+
+<font face="Times New Roman" size="6"> <br >
+<i><p><b>Cadastre-se em nosso site e torne-se um membro!</b></p> </font>
+    <h3> <i> Você pode facilitar nosso serviço e ainda pagar mais barato!</i></h3>
+</center>
+<hr align="center" width="100%" size="1" color=black>
+<br >
+
+<font face="Arial" size="4" color="black">
+    <form name="formulario" action+"recebe.jsp" method="post">
+        <fieldset>
+        <fieldset>
+            <legend> <b> <font color="black"> Dados Pessoais: </font></b> </legend>
+            <label>
+                <input type="hidden" name="formulario" value="cadastro">
+            </label>
+            <p>
+                <label>
+                   <b> Nome Completo: </b> <input type="text" name="nome_completo" placeholder="Lucas Carvalho De Machado">
+                </label>
+                <label>
+                    <b> CPF: </b> <input type="text" class="form-control cpf-mask" placeholder="Ex.: 000.000.000-00" >
+                </label>
+                <label>
+                    <b> RG: </b> <input type="text" class="form-control cpf-mask" placeholder="Ex.: 00.000.000-0"  maxlength="12">
+                </label>
+                <label>
+                   <b> Data de Nascimento: </b> <input type="text" class="form-control date-time-mask" placeholder="Ex.: 00/00/0000 00:00:00" min="1919-01-01" max="2002-12-31">
+                </label>
+            <p>
+                <label>
+                   <b> Telefone: </b><input type="text" class="form-control cel-sp-mask" placeholder="Ex.: (00) 0000-0000" maxlength="14">
+                </label>
+                <label>
+                    <b> Celular: </b><input type="text" class="form-control cel-sp-mask" placeholder="Ex.: (00) 00000-0000" maxlength="15">
+                 </label>
+            </p>
+        </fieldset>
+        <fieldset>
+            <legend> <b> <font color="black">Estado Civil</font></b> </legend>
+            <label>
+                <input type="radio" name="est_civ" value="Solteiro"> Solteiro
+            </label>
+            </p>
+            <label>
+                <input type="radio" name="est_civ" value="Casado"> Casado
+            </label>
+            </p>
+            <p>
+            <label>
+                <input type="radio" name="est_civ" value="Divorciado"> Divorciado
+            </label>
+            </p>
+            <p>
+                <label>
+                    <input type="radio" name="est_civ" value="Viúvo"> Viúvo
+                </label>
+            </p>
+        </fieldset>
+        <fieldset>
+            <legend> <b> <font color="black"> Gênero: </font> </b></legend>
+            <p>
+                <label>
+                    <input type="radio" name="genero" value="Masculino"> Masculino
+                </label>
+            </p>
+            <p>
+                <label>
+                    <input type="radio" name="genero" value="Feminino"> Feminino
+                </label>
+            </p>
+            <p>
+                <label>
+                    <input type="radio" name="genero" value="Outros"> Outros
+                </label>
+            </p>
+        </fieldset>
+        </form>
+        <form action="file:///E:/ETEC/DD1%20Design%20Digital%20-%201DS2/Identidade%20Visual/SITE%20DO%20CAFÉ/index5.html">
+        <p>
+                <label>
+                    <b> E-mail de Usuário: </b> <input type="email" class="form-control mixed-mask" placeholder="Ex.: lucas.23@hotmail.com">
+                </label>
+                <label>
+                    <b> Senha: </b> <input type="password" name="senha" placeholder="*******">
+                </label>
+        </p>
+        <p>
+            <input type="submit" value="Enviar">
+            <input type="reset" value="Limpar Tudo">
+        </p>
+        </fieldset>
+        </form> 
+    </font>
+
+    <br >
+    <center>
+    <hr align="center" width="100%" size="1" color=white>
+    <p><b>Endereço:</b>&nbsp;<a href="https://www.google.com.br/maps/place/Moby+Dick+Caf%C3%A9/@-23.966327,-46.3358142,16z/data=!4m13!1m7!3m6!1s0x94ce030fe61c1005:0x16460a7effa071fd!2sGonzaga,+Santos+-+SP!3b1!8m2!3d-23.9673822!4d-46.3328146!3m4!1s0x94ce0301af69797b:0xb3622fa0fff51653!8m2!3d-23.9713448!4d-46.3267708">Av. Vicente de Carvalho, 30 - Boqueirão, Santos - SP, 11045-500</a>
+        <br >
+         <b>Telefone:</b> (13) 99154-6789 / (13) 3345-9873 
+         <font size="4"> <p> <sup>© 2019 Brasil Café Corporation. Todos os direitos reservados.</sup> </p>
+                <sub>Desenvolvedores: Pedro Jesus 06583 / Allana Cruz 06577 / Samer Araújo 06081
+            </sub></p> </font> </font>
+    </center>
+    <body background="..\IMAGENS PARA O SITE DO CAFÉ\fundops.jpg"></body>
+    
+    </body>
+    </html>

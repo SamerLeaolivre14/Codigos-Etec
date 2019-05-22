@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Brasil Café - Pedidos</title>
+    <meta name="author" content="Pedro Jesus, Samer Araújo & Allana Cruz">
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="css/bootstrap.css" rel="sheetstyle"/>
+
+
+    <STYLE type="text/css"> 
+        A:link {text-decoration:none;color:white;} 
+        A:visited {text-decoration:none;color:white;} 
+        A:active {text-decoration:none;color:white;} 
+        A:hover {text-decoration:underline;color:white;} 
+    </STYLE>
+<style>
+#visor {
+    background-color: #bdffb4;
+    text-align: right;
+ }
+ 
+ #calc {
+    margin: 0 auto 0 auto;
+ }
+ 
+ #opc fieldset {
+    margin: 10px auto 10px auto;
+    width: 40%;
+    border: solid white 1px;
+    padding: 3%;
+    margin-bottom: 10px;
+ }
+ 
+ #opc input {
+    width: 100%;
+    border: solid #ccc 1px;
+    font-size: 11px;
+    margin-bottom: 10px;
+ }
+ 
+ #opc input.num {
+    display: block;
+    width: 24px;
+    height: 24px;
+ }
+ 
+ #opc input.oper {
+    display: block;
+    width: 24px;
+    height: 24px;
+    background-color: #b2b2b2;
+ }
+</style> 
+<script type="text/javascript">
+    function id( el ){
+            return document.getElementById( el );
+    }
+    function getMoney( el ){
+            var money = id( el ).value.replace( ',', '.' );
+            return parseFloat( money )*100;
+    }
+    function soma()
+    {
+            var total = getMoney('campo1')+getMoney('campo2')+getMoney('campo3');
+            id('campo4').value = 'R$ '+(total/100)/2;
+    }
+    </script>
+			<script type="text/javascript">
+				function validar()
+					{ 
+						var n = document.formulario.pnome.value;
+						var s = document.formulario.snome.value;
+                        var r = document.formulario.rnome.value;
+                        var t = document.formulario.tnome.value;
+						if(n=="" && s=="" && r =="" && t=="")
+						{
+							alert('O campo nome está vazio');
+							document.formulario.pnome.focus();
+						}
+						else
+                        {
+							if(s=="" && r=="" && t=="")
+							{
+								alert('O campo sobrenome está vazio');
+								document.formulario.pnome.focus();
+							}
+							else
+                            {
+                                if (r=="" && t=="")
+							    {
+								alert('O campo endereço está vazio');
+								document.formulario.pnome.focus();							
+                                }
+                                else
+                                {
+                                    if (t=="")
+                                    {
+                                    alert('O campo telefone está vazio');
+                                    document.formulario.pnome.focus();
+                                    }
+                                    else
+                                    {
+                                        alert('Os campos estão preenchidos');
+                                        document.formulario.pnome.focus();
+                                    }
+                                }
+                            }
+                        }	
+					}
+    </script>
+ <script type="text/javascript">
+        var Accum = 0;
+        var FlagNewNum = false;
+        var PendingOp = "";	
+    
+        //Abaixo estamos adcionando os valores de cada botão ao parametro Num
+        function NumPressed(Num) {
+            if (FlagNewNum) {
+                document.frm_calc.txt_01.value  = Num;
+                FlagNewNum = false;
+               }
+            else {
+                if (document.frm_calc.txt_01.value == "0")
+                    document.frm_calc.txt_01.value = Num;
+                else
+                    document.frm_calc.txt_01.value += Num;
+               }
+        }
+    
+        //Valores de exibição quando apertado o botão igual
+        function Operation(Op) {
+            if (document.frm_calc.txt_01.value == ""){
+                alert("O Campo esta vázio digite um valor");
+                document.frm_calc.txt_01.value ="0"; }
+            else{
+                if (FlagNewNum && PendingOp != "=");
+                else	{
+                    FlagNewNum = true;
+                    if ( '+' == PendingOp )
+                        Accum += parseFloat(document.frm_calc.txt_01.value);
+                        else if ( '-' == PendingOp )
+                        Accum -= parseFloat(document.frm_calc.txt_01.value);
+                        else if ( '/' == PendingOp )
+                        Accum /= parseFloat(document.frm_calc.txt_01.value);
+                        else if ( '*' == PendingOp )
+                        Accum *= parseFloat(document.frm_calc.txt_01.value);
+                    else
+                        Accum = parseFloat(document.frm_calc.txt_01.value);
+                        document.frm_calc.txt_01.value = Accum;
+                        PendingOp = Op;
+                }
+               }
+        }
+    
+        //Atribuindo o ponto( . ) aos valores numéricos
+        function Ponto() {
+            var curtxt_01 = document.frm_calc.txt_01.value;
+            if (FlagNewNum) {
+                curtxt_01 = "0.";
+                FlagNewNum = false;
+               }
+            else {
+            if (curtxt_01.indexOf(".") == -1)
+                curtxt_01 += ".";
+               }
+            document.frm_calc.txt_01.value = curtxt_01;
+        }
+    </script>
+</head>
+<body>
+    <nav class="navbar navbar-inverse" style="border-color:black">
+        <div class="container-fluid">
+            <button type="button" data target="#meuMenu" data-toggle="collapse" class="navbar-toggle">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        
+        </div>
+    
+        <div id="MeuMenu" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="file:///E:/ETEC/DD1%20Design%20Digital%20-%201DS2/Identidade%20Visual/SITE%20DO%20CAFÉ/index.html  ">Página Inicial</a></li>
+                <li><a href="file:///E:/ETEC/DD1%20Design%20Digital%20-%201DS2/Identidade%20Visual/SITE%20DO%20CAFÉ/index2.html">Cardápio</a></li>
+                <li><a href="file:///E:/ETEC/DD1%20Design%20Digital%20-%201DS2/Identidade%20Visual/SITE%20DO%20CAFÉ/index3.html">Sobre</a></li>
+                <li><a href="file:///E:/ETEC/DD1%20Design%20Digital%20-%201DS2/Identidade%20Visual/SITE%20DO%20CAFÉ/index4.html ">Cadastro</a></li>
+                <li><a href="file:///E:/ETEC/DD1%20Design%20Digital%20-%201DS2/Identidade%20Visual/SITE%20DO%20CAFÉ/index6.html">Pedidos</a></li>
+                <li><a href="file:///E:/ETEC/DD1%20Design%20Digital%20-%201DS2/Identidade%20Visual/SITE%20DO%20CAF%C3%89/index8.html">Identidade Visual</a></li>
+        </ul>
+        </div>
+      </div>
+    </nav>
+    
+<font color="white">
+    <a href="file:///E:/ETEC/DD1%20Design%20Digital%20-%201DS2/Identidade%20Visual/SITE%20DO%20CAFÉ/index.html">
+<img src="..\IMAGENS PARA O SITE DO CAFÉ\Logozão.png" alt="Brasil com Café Image" align="left" style="width: 250px; height: 250px;"> </a>
+
+<br >
+
+<center>
+<font face="Times New Roman" size="6">
+    <i><p><b>Faça já seu pedido! Entregas Delivery! <br > 
+        PROMOÇÃO: 50% DE DESCONTO NO DIA DAS MÃES!
+    </b></p> </font> </center>
+
+<br >
+<br >
+
+<font color="white">
+<font face="Arial" size="4">
+<center>
+
+<table width=40% height=30% border="2px" align="center" border rules= rows>
+    <tr>
+        <th align="left">1. Café Expresso:</th>
+        <td colspan=2 align="right">R$2,50</td>
+    </tr>
+    <tr>
+        <th align="left">2. Café com Leite:</th>
+        <td align="right">R$3,00</td>
+    </tr>
+    <tr>
+        <th align="left">3. Café com Chocolate:</th>
+        <td align="right">R$3,00</td>
+    </tr>
+    <tr>
+        <th align="left">4. Café sem Açúcar:</th>
+        <td align="right">R$2,50</td>
+    </tr>
+    <tr>
+        <th align="left">5. Milkshakes:</th>
+        <td align="right">R$4,00</td>
+    </tr>
+    <tr>
+        <th align="left">6. Tortas Doces:</th>
+        <td align="right">R$7,50</td>
+    </tr>
+    <tr>
+        <th align="left">7. Salgados:</th>
+        <td align="right">R$5,00</td>
+    </tr>
+    <tr>
+        <th align="left">8. Água:</th>
+        <td align="right">R$1,00</td>
+    </tr>
+    <tr>
+        <th align="left">9. Sucos:</th>
+        <td align="right"> R$3,50</td>
+    </tr>
+</table>
+
+<br >
+<br >
+
+<table width=70% height=40% border=1 cellspacing=0 cellpadding=2 bordercolor="white" align ="center">
+    <tr>
+        <th>Milkshakes</th>
+        <td align="middle">Morango</td>
+        <td align="middle">Baunilha</td>
+        <td align="middle">Brigadeiro</td>
+        <td align="middle">Chocolate</td>
+        <td align="middle">Ovomaltine</td>
+        <td align="middle">Doce de Leite</td>
+    </tr>
+    <tr>
+        <th>Sucos</th>
+        <td align="middle">Abacaxi</td>
+        <td align="middle">Limão</td>
+        <td align="middle">Uva</td>
+        <td align="middle">Morango</td>
+        <td align="middle">Pêssego</td>
+        <td align="middle">Laranja</td>
+    </tr>
+    <tr>
+        <th>Salgados</th>
+        <td align="middle">Coxinha</td>
+        <td align="middle">Pão de Queijo</td>
+        <td align="middle">Pastel</td>
+        <td align="middle">Mistinho</td>
+        <td align="middle">Torta de Frango</td>
+        <td align="middle">Esfiha</td>
+    </tr>
+    <tr>
+        <th>Tortas Doces</th>
+        <td align="middle">Morango</td>
+        <td align="middle">Chocolate</td>
+        <td align="middle">Banana</td>
+        <td align="middle">Maçã</td>
+        <td align="middle">Limão</td>
+        <td align="middle">Maracujá</td>
+    </tr>
+</table>
+
+<br >
+<br >
+
+
+<fieldset style="width: 40%; height: 50%">
+    <legend>Informação do Pedido</legend>
+            <form action="" method="">
+                <label>
+                    Valor do 1º produto e o seu nome: <input name="campo1" id="campo1" value="0,00" /> <input name="produto1" id="prod1"><br />
+                </label>
+                <label>
+                    Valor do 2º e o nome (se houver): <input name="campo2" id="campo2" value="0,00" /> <input name="produto2" id="prod2"><br />
+                </label>
+                <label>
+                    Valor do 3º e o nome (se houver): <input name="campo3" id="campo3" value="0,00" /> <input name="produto3" id="prod3"><br />
+                </label>
+                <label>
+                    Total a pagar (descontado): <input name="campo4" readonly="readonly" id="campo4" />
+                </label>
+                    <br />
+                    <input type="button" onclick="soma()" value="Somar" />
+            </form>
+            <form name="formulario" method="post" action="file:///E:/ETEC/DD1%20Design%20Digital%20-%201DS2/Identidade%20Visual/SITE%20DO%20CAFÉ/index7.html">
+                <p>
+                    <label>
+                        Nome: <input type="text" name="pnome">
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        Sobrenome: <input type="text" name="snome">
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        Endereço: <input type="text" name="rnome">
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        Telefone: <input type="text" name="tnome">
+                    </label>
+                </p>
+                <p>
+                        <input type="submit" value="Enviar">
+                        <input type="reset" value="Limpar">
+                        <input type="button" value="Validar Nome" onClick="validar();">
+                </p>
+            </form>
+</fieldset> </center>
+</font>
+
+<br >
+<br >
+    
+<form name="frm_calc" acton>
+        <center>
+        <table width="200" cellpadding="3" cellspacing="5" style="color:white; background-color:#000000; border:2pt solidgreen">
+            <tr>
+            <td colspan="5"align="Center" bgColor="white"><Font Face="Verdana" Size="4" Color="#000000"><b>Calculadora</b></font></td>
+            </tr>
+            <tr>
+            <td colspan="3" align="center" border:2pt solid#FFB90F><input type="text" name="txt_01" value="0" style="color:#000000; background-color:#CFCFCF;border:2pt solidwhite"></td>
+            <td><center><input type="reset" value="AC" onclick="" style="color:white; background-color:#000000; cursor:hand; padding:9px; border:0"></center></td>
+            <td><center><input type="button" value="=" name="btn_igual" onclick="Operation('=')" style="color:white; background-color:#000000; cursor:hand; padding:9px; border:0"></center></td>
+            </tr>
+            <tr>
+            <td><center><input type="button" value="7" name="btn_7" onclick="NumPressed(7)" style="color:white; background-color:#000000; cursor:hand; padding:9px; border:0"></center></td>
+            <td><center><input type="button" value="8" name="btn_8" onclick="NumPressed(8)" style="color:white; background-color:#000000; cursor:hand; padding:9px; border:0"></center></td>
+            <td><center><input type="button" value="9" name="btn_9" onclick="NumPressed(9)" style="color:white; background-color:#000000; cursor:hand; padding:9px; border:0"></center></td>
+            <td><center><input type="button" value="+" name="btn_soma" onclick="Operation('+')" style="color:white; background-color:#000000; cursor:hand; padding:9px; border:0"></center></td>
+            <td><center><input type="button" value="-" name="btn_subt" onclick="Operation('-')" style="color:white; background-color:#000000; cursor:hand; padding:9px; border:0"></center></td>
+            </tr>
+            <tr>
+            <td><center><input type="button" value="4" name="btn_4" onclick="NumPressed(4)" style="color:white; background-color:#000000; cursor:hand; padding:9px; border:0"></center></td>
+            <td><center><input type="button" value="5" name="btn_5" onclick="NumPressed(5)" style="color:white; background-color:#000000; cursor:hand; padding:9px; border:0"></center></td>
+            <td><center><input type="button" value="6" name="btn_6" onclick="NumPressed(6)" style="color:white; background-color:#000000; cursor:hand; padding:9px; border:0"></center></td>
+            <td><center><input type="button" value="*" name="btn_mult" onclick="Operation('*')" style="color:white; background-color:#000000; cursor:hand; padding:9px; border:0"></center></td>
+            <td><center><input type="button" value="/" name="btn_divi" onclick="Operation('/')" style="color:white; background-color:#000000; cursor:hand; padding:9px; border:0"></center></td>
+            </tr>
+            <tr>
+            <td><center><input type="button" value="1" name="btn_1" onclick="NumPressed(1)" style="color:white; background-color:#000000; cursor:hand; padding:9px; border:0"></center></td>
+            <td><center><input type="button" value="2" name="btn_2" onclick="NumPressed(2)" style="color:white; background-color:#000000; cursor:hand; padding:9px; border:0"></center></td>
+            <td><center><input type="button" value="3" name="btn_3" onclick="NumPressed(3)" style="color:white; background-color:#000000; cursor:hand; padding:9px; border:0"></center></td>
+            <td><center><input type="button" value="0" name="btn_0" onclick="NumPressed(0)" style="color:white; background-color:#000000; cursor:hand; padding:9px; border:0"></center></td>
+            <td><center><input type="button" value="." name="btn_pont" onclick="Ponto()" style="color:white; background-color:#000000; cursor:hand; padding:9px; border:0"></center></td>
+            </tr>
+        </table>
+        </form></center>
+
+<br >
+<br>
+
+<center>
+    <hr align="center" width="100%" size="1" color=white>
+    <p><b>Endereço:</b>&nbsp;<a href="https://www.google.com.br/maps/place/Moby+Dick+Caf%C3%A9/@-23.966327,-46.3358142,16z/data=!4m13!1m7!3m6!1s0x94ce030fe61c1005:0x16460a7effa071fd!2sGonzaga,+Santos+-+SP!3b1!8m2!3d-23.9673822!4d-46.3328146!3m4!1s0x94ce0301af69797b:0xb3622fa0fff51653!8m2!3d-23.9713448!4d-46.3267708">Av. Vicente de Carvalho, 30 - Boqueirão, Santos - SP, 11045-500</a>
+        <br >
+         <b>Telefone:</b> (13) 99154-6789 / (13) 3345-9873 
+         <font size="4"> <p> <sup>© 2019 Brasil Café Corporation. Todos os direitos reservados.</sup> </p>
+                <sub>Desenvolvedores: Pedro Jesus 06583 / Allana Cruz 06577 / Samer Araújo 06081
+       </sub></p> </font> </font>
+</center>
+<body background="..\IMAGENS PARA O SITE DO CAFÉ\fundops.jpg"></body>
+</body>
+</html>
